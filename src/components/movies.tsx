@@ -9,21 +9,18 @@ const Movies = () => {
   if (isLoading) return <h1>Loading...</h1>
 
   if (error) return <h1>Error! Please reload this page!</h1>
+
   if (data)
     return (
-      <div className='bg-cyan-200 h-screen'>
-        <h1>Movies Page</h1>
-        <div className='flex space-x-2'>
-          {/* {data.results.map((item, index) => (
-            <SmallMovieCard data={item} key={index} />
-          ))} */}
-          {new Array(5).fill(1).map((_, index) => (
-            <SmallMovieCard
-              posterPath={data.results[index].poster_path}
-              title={data.results[index].title}
-              key={index}
-            />
+      <div className='bg-white'>
+        {/* <div className='flex overflow-scroll space-x-2'> */}
+        <div className='grid grid-cols-m4 gap-y-3 gap-x-2 justify-items-center '>
+          {data.results.map((item, index) => (
+            <SmallMovieCard posterPath={item.poster_path} title={item.title} key={index} />
           ))}
+          {/* {new Array(100).fill(1).map((_, index) => (
+            <h1 key={index}>AHHHHHHHH</h1>
+          ))} */}
         </div>
       </div>
     )

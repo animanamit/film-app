@@ -1,9 +1,5 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-
-const apiKey = 'd93edfb1a089ed2c9d223af66995f7d8'
-const page = 1
-
 interface PopularMovies {
   page: number
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
