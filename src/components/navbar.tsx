@@ -7,7 +7,7 @@ const NavBar = () => {
             <li className='mr-4 font-normal leading-[55px] text-xs cursor-pointer'>Search</li>
           </ul>
         </nav>
-        <div className='block mx-auto leading-[55px] font-normal text-xl'>
+        <div className='block mx-auto leading-[55px] font-normal text-2xl'>
           <h4>sserafilm</h4>
         </div>
         <nav>
