@@ -12,7 +12,7 @@ function App() {
     <div>
       <NavBar />
 
-      <main className='px-[55px] grid grid-cols-main'>
+      <main className='px-[55px] grid grid-cols-main mb-20'>
         <LeftSideBar />
         <Routes>
           <Route path='/' element={<Movies />} />

@@ -7,9 +7,10 @@ import { configureStore } from '@reduxjs/toolkit'
 // Or from '@reduxjs/toolkit/query/react'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { tmbdApi } from '@/services/api'
+import currentSelectionReducer from '@/features/category-slice'
 
 export const store = configureStore({
-  reducer: { [tmbdApi.reducerPath]: tmbdApi.reducer },
+  reducer: { [tmbdApi.reducerPath]: tmbdApi.reducer, currentSelection: currentSelectionReducer },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(tmbdApi.middleware),
 })
 

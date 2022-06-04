@@ -16,7 +16,7 @@ const SmallMovieCard = ({ posterPath, title }: SmallMovieCardProps) => {
 '
       >
         <div className='relative h-full w-full text-center'>
-          <h5 className='bottom-4 left-0 px-2 right-0 absolute h-fit invisible group-hover:visible duration-200 text-white uppercase tracking-tighter'>
+          <h5 className='bottom-4 left-0 px-2 right-0 absolute h-fit invisible group-hover:visible duration-50 text-white uppercase tracking-tighter'>
             {title}
           </h5>
         </div>

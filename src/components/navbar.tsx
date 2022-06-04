@@ -1,8 +1,8 @@
 const NavBar = () => {
   return (
     <header className='flex z-10  h-[55px] mx-[55px] sticky top-0 justify-center'>
-      <div className='flex w-full mx-8 uppercase'>
-        <nav className='flex'>
+      <div className='flex w-full  uppercase'>
+        <nav className='flex text-left'>
           <ul>
             <li className='mr-4 font-normal leading-[55px] text-xs cursor-pointer'>Search</li>
           </ul>
@@ -11,9 +11,9 @@ const NavBar = () => {
           <h4>sserafilm</h4>
         </div>
         <nav>
-          <ul className='flex'>
-            <li className='mr-4 font-normal leading-[55px] text-xs cursor-pointer'>Sign Up</li>
-            <li className='mr-4 font-normal leading-[55px] text-xs cursor-pointer'>Log In</li>
+          <ul className='flex text-right'>
+            <li className='ml-4 font-normal leading-[55px] text-xs cursor-pointer'>Sign Up</li>
+            <li className='ml-4 font-normal leading-[55px] text-xs cursor-pointer'>Log In</li>
           </ul>
         </nav>
       </div>
