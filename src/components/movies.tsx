@@ -18,7 +18,11 @@ const Movies = () => {
             <SmallMovieCard data={item} key={index} />
           ))} */}
           {new Array(5).fill(1).map((_, index) => (
-            <SmallMovieCard data={data.results[index]} key={index} />
+            <SmallMovieCard
+              posterPath={data.results[index].poster_path}
+              title={data.results[index].title}
+              key={index}
+            />
           ))}
         </div>
       </div>
