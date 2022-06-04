@@ -1,10 +1,10 @@
 const NavBar = () => {
   return (
-    <header className='flex z-10 bg-teal-100 h-[55px] mx-[55px] sticky top-0 justify-center'>
+    <header className='flex z-10  h-[55px] mx-[55px] sticky top-0 justify-center'>
       <div className='flex w-full mx-8 uppercase'>
         <nav className='flex'>
           <ul>
-            <li className='mr-4 font-normla leading-[55px] text-xs cursor-pointer'>Search</li>
+            <li className='mr-4 font-normal leading-[55px] text-xs cursor-pointer'>Search</li>
           </ul>
         </nav>
         <div className='block mx-auto leading-[55px] font-normal text-xl'>

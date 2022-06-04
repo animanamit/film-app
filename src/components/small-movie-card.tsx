@@ -7,7 +7,7 @@ const SmallMovieCard = ({ posterPath, title }: SmallMovieCardProps) => {
   return (
     <div className='group overflow-hidden relative w-[192px] flex-none'>
       <img
-        src={`https://image.tmdb.org/t/p/w300${posterPath}`}
+        src={`https://image.tmdb.org/t/p/w500${posterPath}`}
         alt='movie poster'
         className='h-72 duration-200 group-hover:scale-110'
       />

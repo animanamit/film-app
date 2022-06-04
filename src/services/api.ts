@@ -16,7 +16,10 @@ export const tmbdApi = createApi({
       query: (page = 1) =>
         `movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${page}`,
     }),
+    getGenres: builder.query<any, void>({
+      query: () => `genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}`,
+    }),
   }),
 })
 
-export const { useGetPopularMoviesQuery } = tmbdApi
+export const { useGetPopularMoviesQuery, useGetGenresQuery } = tmbdApi

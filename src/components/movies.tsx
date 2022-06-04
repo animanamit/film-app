@@ -12,7 +12,7 @@ const Movies = () => {
 
   if (data)
     return (
-      <div className='bg-white'>
+      <div className='bg-white mt-[20px]'>
         {/* <div className='flex overflow-scroll space-x-2'> */}
         <div className='grid grid-cols-m4 gap-y-3 gap-x-2 justify-items-center '>
           {data.results.map((item, index) => (
