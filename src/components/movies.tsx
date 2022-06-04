@@ -1,10 +1,13 @@
 import React from 'react'
-import { useGetPopularMoviesQuery } from '@/services/api'
+import { useGetMoviesQuery } from '@/services/api'
 import SmallMovieCard from './small-movie-card'
+import { useSelector } from 'react-redux'
 
 const Movies = () => {
-  // const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur')
-  const { data, error, isLoading } = useGetPopularMoviesQuery(1)
+  const { name } = useSelector((state: any) => state.currentSelection)
+
+  const page = 1
+  const { data, error, isLoading } = useGetMoviesQuery({ name, page })
 
   if (isLoading) return <h1>Loading...</h1>
 

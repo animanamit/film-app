@@ -1,12 +1,14 @@
 import { selectGenreOrCategory } from '@/features/category-slice'
 import { useGetGenresQuery } from '@/services/api'
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const LeftSideBar = () => {
   const { data, isLoading } = useGetGenresQuery()
 
   const dispatch = useDispatch()
+
+  const { name } = useSelector((state: any) => state.currentSelection)
 
   if (isLoading)
     return <h5 className='font-bold leading-[55px] text-xs cursor-pointer'>Loading...</h5>
@@ -17,7 +19,9 @@ const LeftSideBar = () => {
           <ul>
             <h5 className='font-bold leading-[55px] text-xs cursor-pointer'>categories</h5>
             <li
-              className='font-normal  text-xs cursor-pointer hover:underline'
+              className={`font-normal w-fit text-xs cursor-pointer ${
+                name === 'upcoming' ? 'underline font-medium' : 'hover:underline'
+              }`}
               onClick={() => {
                 dispatch(selectGenreOrCategory('upcoming'))
               }}
@@ -25,7 +29,9 @@ const LeftSideBar = () => {
               upcoming
             </li>
             <li
-              className='font-normal  text-xs cursor-pointer hover:underline'
+              className={`font-normal w-fit text-xs cursor-pointer ${
+                name === 'popular' ? 'underline font-medium' : 'hover:underline'
+              }`}
               onClick={() => {
                 dispatch(selectGenreOrCategory('popular'))
               }}
@@ -33,7 +39,9 @@ const LeftSideBar = () => {
               popular
             </li>
             <li
-              className='font-normal  text-xs cursor-pointer hover:underline'
+              className={`font-normal w-fit text-xs cursor-pointer ${
+                name === 'top_rated' ? 'underline font-medium' : 'hover:underline'
+              }`}
               onClick={() => {
                 dispatch(selectGenreOrCategory('top_rated'))
               }}
@@ -49,7 +57,9 @@ const LeftSideBar = () => {
                 onClick={() => {
                   dispatch(selectGenreOrCategory(item.id))
                 }}
-                className='font-normal  text-xs cursor-pointer hover:underline'
+                className={`font-normal w-fit text-xs cursor-pointer ${
+                  name === item.id ? 'underline font-medium' : 'hover:underline'
+                }`}
               >
                 {item.name}
               </li>
