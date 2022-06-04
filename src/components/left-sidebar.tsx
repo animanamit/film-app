@@ -11,15 +11,15 @@ const LeftSideBar = () => {
   const { name } = useSelector((state: any) => state.currentSelection)
 
   if (isLoading)
-    return <h5 className='font-bold leading-[55px] text-xs cursor-pointer'>Loading...</h5>
+    return <h5 className='font-bold leading-[55px] text-small cursor-pointer'>Loading...</h5>
   if (data) {
     return (
       <div className=' uppercase font-[11px]'>
         <nav>
           <ul>
-            <h5 className='font-bold leading-[55px] text-xs cursor-pointer'>categories</h5>
+            <h5 className='font-bold leading-[55px] text-small cursor-pointer'>categories</h5>
             <li
-              className={`font-normal w-fit text-xs cursor-pointer ${
+              className={`font-normal w-fit text-small cursor-pointer ${
                 name === 'upcoming' ? 'underline font-medium' : 'hover:underline'
               }`}
               onClick={() => {
@@ -29,7 +29,7 @@ const LeftSideBar = () => {
               upcoming
             </li>
             <li
-              className={`font-normal w-fit text-xs cursor-pointer ${
+              className={`font-normal w-fit text-small cursor-pointer ${
                 name === 'popular' ? 'underline font-medium' : 'hover:underline'
               }`}
               onClick={() => {
@@ -39,7 +39,7 @@ const LeftSideBar = () => {
               popular
             </li>
             <li
-              className={`font-normal w-fit text-xs cursor-pointer ${
+              className={`font-normal w-fit text-small cursor-pointer ${
                 name === 'top_rated' ? 'underline font-medium' : 'hover:underline'
               }`}
               onClick={() => {
@@ -50,14 +50,14 @@ const LeftSideBar = () => {
             </li>
           </ul>
           <ul>
-            <h5 className='font-bold leading-[55px] text-xs cursor-pointer'>genres</h5>
+            <h5 className='font-bold leading-[55px] text-small cursor-pointer'>genres</h5>
             {data.genres.map((item: { id: number; name: string }, index: number) => (
               <li
                 key={index}
                 onClick={() => {
                   dispatch(selectGenreOrCategory(item.id))
                 }}
-                className={`font-normal w-fit text-xs cursor-pointer ${
+                className={`font-normal w-fit text-small cursor-pointer ${
                   name === item.id ? 'underline font-medium' : 'hover:underline'
                 }`}
               >

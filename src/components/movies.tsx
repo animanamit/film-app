@@ -5,9 +5,8 @@ import { useSelector } from 'react-redux'
 import PageTraversal from './page-traversal'
 
 const Movies = () => {
-  const { name } = useSelector((state: any) => state.currentSelection)
+  const { name, page } = useSelector((state: any) => state.currentSelection)
 
-  const page = 1
   const { data, error, isLoading } = useGetMoviesQuery({ name, page })
 
   if (isLoading) return <h1>Loading...</h1>
@@ -18,7 +17,6 @@ const Movies = () => {
     console.log(data)
     return (
       <div className='bg-white mt-[20px] mb-[55px]'>
-        {/* <div className='flex overflow-scroll space-x-2'> */}
         <div className='grid grid-cols-m4 gap-y-3 gap-x-2 justify-items-center '>
           {data.results.map((item, index) => (
             <SmallMovieCard posterPath={item.poster_path} title={item.title} key={index} />

@@ -17,10 +17,14 @@ export const categorySlice = createSlice({
     selectGenreOrCategory: (state, action) => {
       console.log(action.payload)
       state.name = action.payload
+      state.page = 1
+    },
+    selectPage: (state, action) => {
+      state.page = action.payload
     },
   },
 })
 
-export const { selectGenreOrCategory } = categorySlice.actions
+export const { selectGenreOrCategory, selectPage } = categorySlice.actions
 
 export default categorySlice.reducer
