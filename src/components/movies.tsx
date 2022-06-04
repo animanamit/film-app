@@ -2,6 +2,7 @@ import React from 'react'
 import { useGetMoviesQuery } from '@/services/api'
 import SmallMovieCard from './small-movie-card'
 import { useSelector } from 'react-redux'
+import PageTraversal from './page-traversal'
 
 const Movies = () => {
   const { name } = useSelector((state: any) => state.currentSelection)
@@ -13,20 +14,22 @@ const Movies = () => {
 
   if (error) return <h1>Error! Please reload this page!</h1>
 
-  if (data)
+  if (data) {
+    console.log(data)
     return (
-      <div className='bg-white mt-[20px]'>
+      <div className='bg-white mt-[20px] mb-[55px]'>
         {/* <div className='flex overflow-scroll space-x-2'> */}
         <div className='grid grid-cols-m4 gap-y-3 gap-x-2 justify-items-center '>
           {data.results.map((item, index) => (
             <SmallMovieCard posterPath={item.poster_path} title={item.title} key={index} />
           ))}
-          {/* {new Array(100).fill(1).map((_, index) => (
-            <h1 key={index}>AHHHHHHHH</h1>
-          ))} */}
+        </div>
+        <div className='mt-12 flex justify-center'>
+          <PageTraversal currentPage={page} lastPage={data.total_pages} />
         </div>
       </div>
     )
+  }
 }
 
 export default Movies
