@@ -12,6 +12,7 @@ export const categorySlice = createSlice({
     name: '',
     page: 1,
     searchQuery: '',
+    selection: '',
   },
   reducers: {
     selectGenreOrCategory: (state, action) => {
@@ -22,9 +23,12 @@ export const categorySlice = createSlice({
     selectPage: (state, action) => {
       state.page = action.payload
     },
+    setSelection: (state, action) => {
+      state.selection = action.payload
+    },
   },
 })
 
-export const { selectGenreOrCategory, selectPage } = categorySlice.actions
+export const { selectGenreOrCategory, selectPage, setSelection } = categorySlice.actions
 
 export default categorySlice.reducer

@@ -1,4 +1,4 @@
-import { selectGenreOrCategory } from '@/features/category-slice'
+import { selectGenreOrCategory, setSelection } from '@/features/category-slice'
 import { useGetGenresQuery } from '@/services/api'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -24,6 +24,7 @@ const LeftSideBar = () => {
               }`}
               onClick={() => {
                 dispatch(selectGenreOrCategory('upcoming'))
+                dispatch(setSelection('UPCOMING'))
               }}
             >
               upcoming
@@ -34,6 +35,7 @@ const LeftSideBar = () => {
               }`}
               onClick={() => {
                 dispatch(selectGenreOrCategory('popular'))
+                dispatch(setSelection('POPULAR'))
               }}
             >
               popular
@@ -44,6 +46,7 @@ const LeftSideBar = () => {
               }`}
               onClick={() => {
                 dispatch(selectGenreOrCategory('top_rated'))
+                dispatch(setSelection('TOP RATED'))
               }}
             >
               top rated
@@ -56,6 +59,7 @@ const LeftSideBar = () => {
                 key={index}
                 onClick={() => {
                   dispatch(selectGenreOrCategory(item.id))
+                  dispatch(setSelection(item.name.toUpperCase()))
                 }}
                 className={`font-normal w-fit text-small cursor-pointer ${
                   name === item.id ? 'underline font-medium' : 'hover:underline'
