@@ -9,7 +9,7 @@ const Movies = () => {
 
   const { data, error, isLoading } = useGetMoviesQuery({ name, page })
 
-  if (isLoading) return <h1>Loading...</h1>
+  if (isLoading) return <h1 className='text-small uppercase mt-8 font-normal'>Loading...</h1>
 
   if (error) return <h1>Error! Please reload this page!</h1>
 

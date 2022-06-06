@@ -1,10 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-// export interface RootState {
-//   name: string;
-//   page: number;
-//   searchQuery: string;
-// }
+export interface CategoryState {
+  name: string | number
+  page: number
+  searchQuery: string
+  selection: string
+}
 
 export const categorySlice = createSlice({
   name: 'categorySlice',
@@ -15,15 +16,14 @@ export const categorySlice = createSlice({
     selection: '',
   },
   reducers: {
-    selectGenreOrCategory: (state, action) => {
-      console.log(action.payload)
+    selectGenreOrCategory: (state, action: PayloadAction<any>) => {
       state.name = action.payload
       state.page = 1
     },
-    selectPage: (state, action) => {
+    selectPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload
     },
-    setSelection: (state, action) => {
+    setSelection: (state, action: PayloadAction<string>) => {
       state.selection = action.payload
     },
   },
