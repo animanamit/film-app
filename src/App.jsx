@@ -6,6 +6,7 @@ import Movies from '@/components/movies'
 import NavBar from '@/components/navbar'
 import LeftSideBar from '@/components/left-sidebar'
 import RightSideBar from '@/components/right-sidebar'
+import Home from '@/components/home'
 
 function App() {
   return (
@@ -13,9 +14,9 @@ function App() {
       <NavBar />
 
       <main className='px-[55px] grid grid-cols-main mb-20'>
-        <LeftSideBar />
+        {/* <LeftSideBar /> */}
         <Routes>
-          <Route path='/' element={<Movies />} />
+          <Route path='/' element={<Home />} />
           <Route path='/movie'>
             <Route path=':id' element={<MovieInformation />} />
           </Route>
@@ -23,7 +24,7 @@ function App() {
             <Route path=':id' element={<Actors />} />
           </Route>
         </Routes>
-        <RightSideBar />
+        {/* <RightSideBar /> */}
       </main>
     </div>
   )

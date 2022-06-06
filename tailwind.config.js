@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         m4: 'repeat(4,198px)',
-        main: '1fr auto 1fr',
+        main: '1fr 3fr 1fr',
       },
     },
   },

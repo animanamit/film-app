@@ -3,6 +3,7 @@ import { useGetMoviesQuery } from '@/services/api'
 import SmallMovieCard from './small-movie-card'
 import { useSelector } from 'react-redux'
 import PageTraversal from './page-traversal'
+import { Link } from 'react-router-dom'
 
 const Movies = () => {
   const { selectedCategory, page, selectedCategoryLabel, searchQuery } = useSelector(
@@ -33,7 +34,9 @@ const Movies = () => {
         )}
         <div className='grid grid-cols-m4 gap-y-3 gap-x-2 justify-items-center '>
           {data.results.map((item, index) => (
-            <SmallMovieCard posterPath={item.poster_path} title={item.title} key={index} />
+            <Link key={index} to={`/movie/${item.id}`}>
+              <SmallMovieCard posterPath={item.poster_path} title={item.title} />
+            </Link>
           ))}
         </div>
         <div className='mt-12 flex justify-center'>

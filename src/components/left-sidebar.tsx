@@ -4,9 +4,9 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const LeftSideBar = () => {
-  const { data, isLoading } = useGetGenresQuery()
-
   const dispatch = useDispatch()
+
+  const { data, isLoading } = useGetGenresQuery()
 
   const { selectedCategory } = useSelector((state: any) => state.currentSelection)
 
