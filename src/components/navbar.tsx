@@ -1,8 +1,13 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import SearchBar from './search-bar'
+import { resetReduxState } from '@/features/category-slice'
 
 const NavBar = () => {
   const [showSearchBar, setShowSearchBar] = useState(false)
+  const dispatch = useDispatch()
+
   return (
     <header className='flex z-10  h-[55px] mx-[55px] sticky top-0 justify-center'>
       <div className='flex w-full  '>
@@ -18,7 +23,9 @@ const NavBar = () => {
           </ul>
         </nav>
         <div className='block mx-auto leading-[55px] font-normal uppercase text-2xl'>
-          <h4>sserafilm</h4>
+          <Link to='/' onClick={() => dispatch(resetReduxState())}>
+            <h4>sserafilm</h4>
+          </Link>
         </div>
         <nav>
           <ul className='flex text-right'>

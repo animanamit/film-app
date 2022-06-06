@@ -5,9 +5,11 @@ import { useSelector } from 'react-redux'
 import PageTraversal from './page-traversal'
 
 const Movies = () => {
-  const { name, page, selection } = useSelector((state: any) => state.currentSelection)
+  const { selectedCategory, page, selectedCategoryLabel, searchQuery } = useSelector(
+    (state: any) => state.currentSelection,
+  )
 
-  const { data, error, isLoading } = useGetMoviesQuery({ name, page })
+  const { data, error, isLoading } = useGetMoviesQuery({ selectedCategory, page, searchQuery })
 
   if (isLoading) return <h1 className='text-small uppercase mt-8 font-normal'>Loading...</h1>
 
@@ -17,8 +19,15 @@ const Movies = () => {
     console.log(data)
     return (
       <div className='bg-white mt-[20px] mb-[55px]'>
-        {selection ? (
-          <h5 className='font-semibold text-small uppercase mb-6'>{selection}</h5>
+        {selectedCategoryLabel ? (
+          <h5 className='font-semibold text-small uppercase mb-6'>{selectedCategoryLabel}</h5>
+        ) : (
+          <></>
+        )}
+        {searchQuery ? (
+          <h5 className=' text-small uppercase mb-6'>
+            Showing results for &apos;{searchQuery}&apos;
+          </h5>
         ) : (
           <></>
         )}

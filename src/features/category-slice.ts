@@ -1,34 +1,52 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface CategoryState {
-  name: string | number
+  selectedCategory: string | number
   page: number
   searchQuery: string
-  selection: string
+  selectedCategoryLabel: string
 }
 
 export const categorySlice = createSlice({
   name: 'categorySlice',
   initialState: {
-    name: '',
+    selectedCategory: '',
     page: 1,
     searchQuery: '',
-    selection: '',
+    selectedCategoryLabel: '',
   },
   reducers: {
     selectGenreOrCategory: (state, action: PayloadAction<any>) => {
-      state.name = action.payload
+      state.selectedCategory = action.payload
       state.page = 1
+      state.searchQuery = ''
     },
     selectPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload
     },
-    setSelection: (state, action: PayloadAction<string>) => {
-      state.selection = action.payload
+    setSelectedCategoryLabel: (state, action: PayloadAction<string>) => {
+      state.selectedCategoryLabel = action.payload
+    },
+    searchMovie: (state, action: PayloadAction<string>) => {
+      state.searchQuery = action.payload
+      state.selectedCategory = action.payload = ''
+      state.selectedCategoryLabel = ''
+    },
+    resetReduxState: (state) => {
+      state.selectedCategory = ''
+      state.page = 1
+      state.searchQuery = ''
+      state.selectedCategoryLabel = ''
     },
   },
 })
 
-export const { selectGenreOrCategory, selectPage, setSelection } = categorySlice.actions
+export const {
+  selectGenreOrCategory,
+  selectPage,
+  setSelectedCategoryLabel,
+  searchMovie,
+  resetReduxState,
+} = categorySlice.actions
 
 export default categorySlice.reducer

@@ -1,4 +1,4 @@
-import { selectGenreOrCategory, setSelection } from '@/features/category-slice'
+import { selectGenreOrCategory, setSelectedCategoryLabel } from '@/features/category-slice'
 import { useGetGenresQuery } from '@/services/api'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,7 +8,7 @@ const LeftSideBar = () => {
 
   const dispatch = useDispatch()
 
-  const { name } = useSelector((state: any) => state.currentSelection)
+  const { selectedCategory } = useSelector((state: any) => state.currentSelection)
 
   if (isLoading)
     return <h5 className='font-bold leading-[55px] text-small cursor-pointer'>Loading...</h5>
@@ -20,33 +20,33 @@ const LeftSideBar = () => {
             <h5 className='font-bold leading-[55px] text-small cursor-pointer'>categories</h5>
             <li
               className={`font-normal w-fit text-small cursor-pointer ${
-                name === 'upcoming' ? 'underline font-medium' : 'hover:underline'
+                selectedCategory === 'upcoming' ? 'underline font-medium' : 'hover:underline'
               }`}
               onClick={() => {
                 dispatch(selectGenreOrCategory('upcoming'))
-                dispatch(setSelection('UPCOMING'))
+                dispatch(setSelectedCategoryLabel('UPCOMING'))
               }}
             >
               upcoming
             </li>
             <li
               className={`font-normal w-fit text-small cursor-pointer ${
-                name === 'popular' ? 'underline font-medium' : 'hover:underline'
+                selectedCategory === 'popular' ? 'underline font-medium' : 'hover:underline'
               }`}
               onClick={() => {
                 dispatch(selectGenreOrCategory('popular'))
-                dispatch(setSelection('POPULAR'))
+                dispatch(setSelectedCategoryLabel('POPULAR'))
               }}
             >
               popular
             </li>
             <li
               className={`font-normal w-fit text-small cursor-pointer ${
-                name === 'top_rated' ? 'underline font-medium' : 'hover:underline'
+                selectedCategory === 'top_rated' ? 'underline font-medium' : 'hover:underline'
               }`}
               onClick={() => {
                 dispatch(selectGenreOrCategory('top_rated'))
-                dispatch(setSelection('TOP RATED'))
+                dispatch(setSelectedCategoryLabel('TOP RATED'))
               }}
             >
               top rated
@@ -59,10 +59,10 @@ const LeftSideBar = () => {
                 key={index}
                 onClick={() => {
                   dispatch(selectGenreOrCategory(item.id))
-                  dispatch(setSelection(item.name.toUpperCase()))
+                  dispatch(setSelectedCategoryLabel(item.name.toUpperCase()))
                 }}
                 className={`font-normal w-fit text-small cursor-pointer ${
-                  name === item.id ? 'underline font-medium' : 'hover:underline'
+                  selectedCategory === item.id ? 'underline font-medium' : 'hover:underline'
                 }`}
               >
                 {item.name}

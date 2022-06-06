@@ -6,11 +6,17 @@ interface SmallMovieCardProps {
 const SmallMovieCard = ({ posterPath, title }: SmallMovieCardProps) => {
   return (
     <div className='group overflow-hidden relative w-[192px] flex-none'>
-      <img
-        src={`https://image.tmdb.org/t/p/w500${posterPath}`}
-        alt='movie poster'
-        className='h-72 duration-200 group-hover:scale-110'
-      />
+      {posterPath ? (
+        <img
+          src={`https://image.tmdb.org/t/p/w500${posterPath}`}
+          alt='movie poster'
+          className='h-72 duration-200 group-hover:scale-110'
+        />
+      ) : (
+        <div className='h-72 bg-black'>
+          <h5 className='text-xs text-white'>NO POSTER AVAILABLE</h5>
+        </div>
+      )}
       <div
         className='absolute top-0 h-72 bottom-0 right-0 left-0 group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:to-gray-900  group-hover:opacity-70;
 '

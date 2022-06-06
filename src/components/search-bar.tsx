@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { SearchIcon } from '@heroicons/react/outline'
+import { searchMovie } from '@/features/category-slice'
+import { useDispatch } from 'react-redux'
+
 interface SearchBarProps {
   close: () => void
 }
@@ -28,6 +31,15 @@ const SearchBar = (props: SearchBarProps) => {
   const searchBoxRef = useRef(null)
   useOutsideAlerter(searchBoxRef, props.close)
 
+  const dispatch = useDispatch()
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    console.log(search)
+    dispatch(searchMovie(search))
+    props.close()
+  }
+
   return (
     <div
       ref={searchBoxRef}
@@ -35,7 +47,10 @@ const SearchBar = (props: SearchBarProps) => {
     >
       <div className='flex w-full justify-center mt-6 items-center space-x-2'>
         <div className='flex-1'>
-          <form className='w-full flex border-[1px] border-black p-2 items-center'>
+          <form
+            onSubmit={(e) => handleSubmit(e)}
+            className='w-full flex border-[1px] border-black p-2 items-center'
+          >
             <input
               className=' outline-transparent text-small text-black placeholder-gray-500 w-full'
               placeholder='SEARCH MOVIES'

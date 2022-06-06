@@ -9,8 +9,9 @@ interface PopularMovies {
 }
 
 interface SelectedMovies {
-  name: number | string
+  selectedCategory: number | string
   page: number
+  searchQuery: string
 }
 
 export const tmbdApi = createApi({
@@ -25,12 +26,15 @@ export const tmbdApi = createApi({
       query: () => `genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}`,
     }),
     getMovies: builder.query<PopularMovies, SelectedMovies>({
-      query: ({ name, page }) => {
+      query: ({ selectedCategory, page, searchQuery }) => {
         // return `movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${page}`
-        if (name && typeof name === 'string') {
-          return `movie/${name}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${page}`
+        console.log(selectedCategory, page, searchQuery)
+        if (searchQuery !== '') {
+          return `search/movie?query=${searchQuery}&api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${page}`
+        } else if (selectedCategory && typeof selectedCategory === 'string') {
+          return `movie/${selectedCategory}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${page}`
         } else
-          return `discover/movie?with_genres=${name}&api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${page}`
+          return `discover/movie?with_genres=${selectedCategory}&api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${page}`
       },
     }),
   }),
