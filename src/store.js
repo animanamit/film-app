@@ -11,7 +11,7 @@ import currentSelectionReducer from '@/features/category-slice'
 
 export const store = configureStore({
   reducer: { [tmbdApi.reducerPath]: tmbdApi.reducer, currentSelection: currentSelectionReducer },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(tmbdApi.middleware),
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(tmbdApi.middleware),
 })
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors

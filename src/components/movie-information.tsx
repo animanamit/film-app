@@ -9,6 +9,7 @@ const MovieInformation = () => {
 
   if (data) {
     console.log(data)
+    const trailer = data.videos.results.filter((item: any) => item.name === 'Official Trailer')
 
     return (
       <>
@@ -22,6 +23,18 @@ const MovieInformation = () => {
             src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
             alt='...'
           />
+          {trailer ? (
+            <>
+              <iframe
+                frameBorder='0'
+                className='w-full mt-4 h-96'
+                title='Official Trailer'
+                src={`https://www.youtube.com/embed/${trailer.key}`}
+              ></iframe>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
         <div className='text-right mt-4'>
           <h5 className='uppercase text-small font-medium'>Genres</h5>

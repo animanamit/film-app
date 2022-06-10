@@ -7,6 +7,7 @@ import NavBar from '@/components/navbar'
 import LeftSideBar from '@/components/left-sidebar'
 import RightSideBar from '@/components/right-sidebar'
 import Home from '@/components/home'
+import Login from './components/login'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/actors'>
             <Route path=':id' element={<Actors />} />
           </Route>
+          <Route path='/login' element={<Login />} />
         </Routes>
         {/* <RightSideBar /> */}
       </main>

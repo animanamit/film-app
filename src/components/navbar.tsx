@@ -1,12 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import SearchBar from './search-bar'
 import { resetReduxState } from '@/features/category-slice'
+import { supabase } from '@/services/supabase-client'
+import { Session } from '@supabase/supabase-js'
 
 const NavBar = () => {
   const [showSearchBar, setShowSearchBar] = useState(false)
+  const [session, setSession] = useState<Session | null>(null)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    setSession(supabase.auth.session())
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+  }, [])
+  const logout = () => {
+    supabase.auth.signOut()
+  }
 
   return (
     <header className='flex z-10  h-[55px] mx-[55px] sticky top-0 justify-center'>
@@ -29,12 +43,33 @@ const NavBar = () => {
         </div>
         <nav>
           <ul className='flex text-right'>
-            <li className='ml-4 font-normal leading-[55px] text-xs cursor-pointer uppercase'>
-              Sign Up
-            </li>
-            <li className='ml-4 font-normal leading-[55px] text-xs cursor-pointer uppercase'>
-              Log In
-            </li>
+            {!session ? (
+              <Link to='/login'>
+                <li className='ml-4 font-normal leading-[55px] text-xs cursor-pointer uppercase'>
+                  Log In
+                </li>
+              </Link>
+            ) : (
+              <>
+                <Link to='/watchlist'>
+                  <li className='ml-4 font-normal leading-[55px] text-xs cursor-pointer uppercase'>
+                    Watchlist
+                  </li>
+                </Link>
+                <Link to='/'>
+                  <li className='ml-4 font-normal leading-[55px] text-xs cursor-pointer uppercase'>
+                    Account
+                  </li>
+                </Link>
+
+                <li
+                  onClick={logout}
+                  className='ml-4 font-normal leading-[55px] text-xs cursor-pointer uppercase'
+                >
+                  Log Out
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>
