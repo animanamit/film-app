@@ -24,21 +24,21 @@ const Login = () => {
     } finally {
       setLoading(false)
       alert('success!')
-      // navigate('/')
+      navigate('/')
     }
   }
   return (
     <>
       <div></div>
-      <div className='flex flex-col justify-center items-center space-y-2'>
-        <h5 className='text-small mt-12 uppercase text-left'>Login or Create account</h5>
+      <div className='flex flex-col items-center justify-center space-y-2'>
+        <h5 className='mt-12 text-left uppercase text-small'>Login or Create account</h5>
 
         {loading ? (
-          <h5 className='text-small mt-12 uppercase text-left'>Loading...</h5>
+          <h5 className='mt-12 text-left uppercase text-small'>Loading...</h5>
         ) : (
           <>
-            <h5 className='text-small text-left mt-6'>Email Address</h5>
-            <form className='w-3/5 items-center flex flex-col' onSubmit={handleLogin}>
+            <h5 className='mt-6 text-left text-small'>Email Address</h5>
+            <form className='flex flex-col items-center w-3/5' onSubmit={handleLogin}>
               <input
                 onChange={(e) => setEmail(e.target.value)}
                 type='text'
@@ -46,7 +46,7 @@ const Login = () => {
               />
               <button
                 type='submit'
-                className='text-white w-3/5 text-small uppercase py-2 px-4 bg-black mt-6'
+                className='w-3/5 px-4 py-2 mt-6 text-white uppercase bg-black text-small'
               >
                 continue
               </button>
